@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
 import ChatList from './ChatList';
+import { toast } from 'react-toastify';
+import { Bounce } from 'react-toastify';
 
 import avatar1 from '../../../../assets/images/user/avatar-1.jpg';
 import avatar2 from '../../../../assets/images/user/avatar-2.jpg';
@@ -33,9 +35,22 @@ const NavRight = () => {
     // Hapus semua data dari localStorage
     console.log('kocak');
     localStorage.clear();
+    toast.success('Logout Success', {
+      position: 'top-right',
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+      transition: Bounce
+    });
 
-    // Navigasi ke halaman login
-    navigate('/login');
+    setTimeout(() => {
+      // Navigasi ke halaman login
+      navigate('/login');
+    }, 1000);
   };
 
   return (
@@ -51,7 +66,7 @@ const NavRight = () => {
                 <img src={avatar1} className="img-radius" alt="User Profile" />
                 <span>{dataLogin ? dataLogin.user.us_name : ''}</span>
 
-                <div onClick={logout} className="dud-logout" title="Logout">
+                <div onClick={logout} className="dud-logout" style={{ cursor: 'pointer' }} title="Logout">
                   <i className="feather icon-log-out" />
                 </div>
               </div>

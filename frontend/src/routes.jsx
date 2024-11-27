@@ -45,14 +45,10 @@ const routes = [
     path: '/login',
     element: lazy(() => import('./views/auth/signin/SignIn1'))
   },
+
   {
     exact: 'true',
-    path: '/auth/signin-1',
-    element: lazy(() => import('./views/auth/signin/SignIn1'))
-  },
-  {
-    exact: 'true',
-    path: '/auth/signup-1',
+    path: '/signup',
     element: lazy(() => import('./views/auth/signup/SignUp1'))
   },
   {

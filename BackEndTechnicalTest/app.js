@@ -11,6 +11,8 @@ const categoryRouter = require('./routes/categoryRoute');
 const productRouter = require('./routes/productRoute');
 const orderRouter = require('./routes/orderRoute');
 const authRouter = require('./routes/authRoute');
+const countRouter = require('./routes/countRoute');
+
 var app = express();
 
 // view engine setup
@@ -27,6 +29,7 @@ app.use('/api', categoryRouter);
 app.use('/api', productRouter);
 app.use('/api', orderRouter);
 app.use('/api', authRouter);
+app.use('/api', countRouter);
 // app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

@@ -7,7 +7,9 @@ import { Formik } from 'formik';
 import apiServices from 'services/api';
 import { toast } from 'react-toastify';
 import { Bounce } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 const JWTLogin = () => {
+  const navigate = useNavigate();
   const [dataLogin, setDataLogin] = useState({
     email: '',
     password: ''
@@ -66,6 +68,9 @@ const JWTLogin = () => {
           theme: 'light',
           transition: Bounce
         });
+        setTimeout(() => {
+          navigate('/dashboard');
+        }, 1000);
       }
       // Reset form or redirect on success
     } catch (validationErrors) {
@@ -108,20 +113,6 @@ const JWTLogin = () => {
         {errors.password && <small className="text-danger form-text">{errors.password}</small>}
       </div>
 
-      <div className="custom-control custom-checkbox text-start mb-4 mt-2">
-        <input
-          type="checkbox"
-          className="custom-control-input mx-2"
-          id="customCheck1"
-          name="remember"
-          onChange={handleChange}
-          checked={dataLogin.remember}
-        />
-        <label className="custom-control-label" htmlFor="customCheck1">
-          Save credentials.
-        </label>
-      </div>
-
       {errors.submit && (
         <Col sm={12}>
           <Alert color="danger">{errors.submit}</Alert>
@@ -131,7 +122,7 @@ const JWTLogin = () => {
       <Row>
         <Col>
           <Button className="btn-block mb-4" color="primary" disabled={isSubmitting} size="large" type="submit">
-            Signin Cuy
+            Sign In
           </Button>
         </Col>
       </Row>

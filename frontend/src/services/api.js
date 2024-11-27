@@ -139,6 +139,14 @@ const apiServices = {
     } catch (err) {
       return err.response;
     }
+  },
+  getCountAll: async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/countAll`);
+      return response;
+    } catch (err) {
+      return err.response;
+    }
   }
 };
 
